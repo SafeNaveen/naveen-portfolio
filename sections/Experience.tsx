@@ -1,6 +1,9 @@
 import { portfolio } from "@/constants/data";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 export default function Experience() {
+  const experience = portfolio.experience;
+
   return (
     <section
       id="experience"
@@ -8,66 +11,102 @@ export default function Experience() {
     >
       <div className="mx-auto max-w-7xl px-6">
 
-        <h2 className="text-center text-4xl font-bold">
-          Professional Experience
-        </h2>
+        {/* Section Title */}
 
-        <p className="mt-4 text-center text-gray-400">
-          My professional journey in Information Security, Cybersecurity,
-          Governance, Risk & Compliance, and Enterprise Security Operations.
-        </p>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold">
+            Professional Experience
+          </h2>
 
-        <div className="mt-16">
+          <p className="mt-4 text-gray-400">
+            My current role and key responsibilities in Enterprise Information Security.
+          </p>
+        </div>
 
-          {portfolio.experience.map((job) => (
+        {/* Experience Card */}
 
-            <div
-              key={job.company}
-              className="rounded-3xl border border-white/10 bg-zinc-900 p-10 shadow-lg"
-            >
+        <div className="mt-16 rounded-3xl border border-white/10 bg-zinc-900/60 p-10 shadow-xl backdrop-blur">
+
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+
+            <div>
 
               <h3 className="text-3xl font-bold text-cyan-400">
-                {job.company}
+                {experience.designation}
               </h3>
 
-              <h4 className="mt-2 text-xl font-semibold">
-                {job.designation}
-              </h4>
+              <div className="mt-5 flex flex-wrap gap-6 text-gray-300">
 
-              <div className="mt-4 flex flex-wrap gap-6 text-gray-400">
+                <div className="flex items-center gap-2">
+                  <Briefcase size={18} />
+                  {experience.company}
+                </div>
 
-                <span>📅 {job.duration}</span>
+                <div className="flex items-center gap-2">
+                  <Calendar size={18} />
+                  {experience.duration}
+                </div>
 
-                <span>📍 {job.location}</span>
+                <div className="flex items-center gap-2">
+                  <MapPin size={18} />
+                  {experience.location}
+                </div>
 
               </div>
 
-              <p className="mt-8 text-lg leading-8 text-gray-300">
-                {job.summary}
-              </p>
+            </div>
 
-              <h5 className="mt-10 text-xl font-semibold text-white">
-                Key Responsibilities
-              </h5>
+          </div>
 
-              <ul className="mt-6 grid gap-4 md:grid-cols-2">
+          {/* Responsibilities */}
 
-                {job.responsibilities.map((item) => (
+          <div className="mt-12">
 
-                  <li
-                    key={item}
-                    className="rounded-xl border border-white/10 bg-black p-4 text-gray-300"
-                  >
-                    ✅ {item}
-                  </li>
+            <h4 className="mb-6 text-2xl font-semibold">
+              Key Responsibilities
+            </h4>
 
-                ))}
+            <ul className="grid gap-4 md:grid-cols-2">
 
-              </ul>
+              {experience.responsibilities.map((item) => (
+
+                <li
+                  key={item}
+                  className="rounded-xl border border-white/10 bg-black/30 p-4 text-gray-300 transition hover:border-cyan-400"
+                >
+                  • {item}
+                </li>
+
+              ))}
+
+            </ul>
+
+          </div>
+
+          {/* Technologies */}
+
+          <div className="mt-14">
+
+            <h4 className="mb-6 text-2xl font-semibold">
+              Technologies & Domains
+            </h4>
+
+            <div className="flex flex-wrap gap-3">
+
+              {experience.technologies.map((tech) => (
+
+                <span
+                  key={tech}
+                  className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-300"
+                >
+                  {tech}
+                </span>
+
+              ))}
 
             </div>
 
-          ))}
+          </div>
 
         </div>
 
